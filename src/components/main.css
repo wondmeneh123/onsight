@@ -1,0 +1,67 @@
+.inputTaker{
+    text-align: center;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inputTaker>input{
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.btnWrapper{
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+.btnWrapper>button{
+    background-color: green;
+}
+.logo{
+    text-align: center;
+}
+.ss{
+    color: greenyellow;
+    margin-bottom: 0px;
+}
+.videoss{
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.videoss >div>{
+    object-fit: contain;
+}
+.videoss >div>video{
+    object-fit: contain !important;
+}
+
+.controls{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+.warn{
+    background: greenyellow;
+    color: black;
+}
+
+.header{
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+.header >.pfp{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: aquamarine;
+}
