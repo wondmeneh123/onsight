@@ -21,7 +21,7 @@ const Recieve = () => {
   const [channelName, setChannelName] = useState("");
   const [host, setHost] = useState(false);
   return (
-    <div>
+    <div className="wrp">
       {inCall ? (
         <VideoCall
           setInCall={setInCall}
@@ -127,7 +127,7 @@ const Videos = (props) => {
   const { users, tracks, host } = props;
 
   return (
-    <div className="px-3">
+    <div className="parent">
       <WebcamStreamCapture />
       {users.length > 0 &&
         users.map((user) => {
@@ -182,15 +182,18 @@ export const Controls = (props) => {
   };
 
   return (
-    <div className="controls flex justify-center items-center mb-4">
-      <p className={trackState.audio ? "on" : ""}  onClick={() => mute("audio")}>
-        {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
-      </p>
-      <p className={trackState.video ? "on" : ""} onClick={() => mute("video")}>
-        {trackState.video ? "MuteVideo" : "UnmuteVideo"}
-      </p>
-      {<button className="p-3 cursor-pointer text-white bg-red-900 rounded" onClick={() => leaveChannel()}>Leave</button>}
-    </div>
+    <div className="controls">
+    <button className={trackState.audio ? "on warn" : "warn"}  onClick={() => mute("audio")}>
+      {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
+    </button>
+    {/* <p className={trackState.video ? "on" : ""} onClick={() => mute("video")}>
+      {trackState.video ? "MuteVideo" : "UnmuteVideo"}
+    </p> */}
+    {<button className="p-3 cursor-pointer text-white bg-red-900 rounded"  
+    style={{
+        backgroundColor: "red"
+      }} onClick={() => leaveChannel()}>Leave</button>}
+  </div>
   );
 };
 

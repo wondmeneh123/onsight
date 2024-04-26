@@ -196,7 +196,7 @@ export const Controls = (props) => {
           backgroundColor: "red"
         }} onClick={() => leaveChannel()}>Leave</button>}
     </div>
-  );
+  );``
 };
 
 const ChannelForm = (props) => {
