@@ -1,11 +1,11 @@
-import React, { useEffect, useState,useRef, useCallback  } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   AgoraVideoPlayer,
   createClient,
   createMicrophoneAndCameraTracks,
 } from "agora-rtc-react";
-import './main.css'
-import WebcamStreamCapture from './Webcam'
+import "./main.css";
+import WebcamStreamCapture from "./Webcam";
 const config = {
   mode: "live",
   codec: "vp8",
@@ -14,9 +14,6 @@ const config = {
 const appId = "8c59aaf317f947d7a5fcd8adba54b880";
 
 const Recieve = () => {
-
-
- 
   const [inCall, setInCall] = useState(false);
   const [channelName, setChannelName] = useState("");
   const [host, setHost] = useState(false);
@@ -48,7 +45,6 @@ const VideoCall = (props) => {
   const [start, setStart] = useState(false);
   const { host } = props;
 
-  
   const client = useClient();
   const { ready, tracks } = useMicrophoneAndCameraTracks();
 
@@ -128,7 +124,6 @@ const Videos = (props) => {
 
   return (
     <div className="parent">
-      <WebcamStreamCapture />
       {users.length > 0 &&
         users.map((user) => {
           if (user.videoTrack) {
@@ -141,14 +136,12 @@ const Videos = (props) => {
                   videoTrack={user.videoTrack}
                   className="border-solid border-4 rounded border-slate-900 vid mb-5"
                   style={{ height: "600px", width: "600px" }}
-               
                 />
               </div>
             );
           } else return null;
         })}
     </div>
-    
   );
 };
 
@@ -183,17 +176,27 @@ export const Controls = (props) => {
 
   return (
     <div className="controls">
-    <button className={trackState.audio ? "on warn" : "warn"}  onClick={() => mute("audio")}>
-      {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
-    </button>
-    {/* <p className={trackState.video ? "on" : ""} onClick={() => mute("video")}>
+      <button
+        className={trackState.audio ? "on warn" : "warn"}
+        onClick={() => mute("audio")}
+      >
+        {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
+      </button>
+      {/* <p className={trackState.video ? "on" : ""} onClick={() => mute("video")}>
       {trackState.video ? "MuteVideo" : "UnmuteVideo"}
     </p> */}
-    {<button className="p-3 cursor-pointer text-white bg-red-900 rounded"  
-    style={{
-        backgroundColor: "red"
-      }} onClick={() => leaveChannel()}>Leave</button>}
-  </div>
+      {
+        <button
+          className="p-3 cursor-pointer text-white bg-red-900 rounded"
+          style={{
+            backgroundColor: "red",
+          }}
+          onClick={() => leaveChannel()}
+        >
+          Leave
+        </button>
+      }
+    </div>
   );
 };
 
@@ -202,32 +205,36 @@ const ChannelForm = (props) => {
 
   return (
     <>
-     
-    <h1 className="logo">PC<span className="ss">ONSIGHT</span></h1>
-    <form className="inputTaker">
-      <h2>Please Enter ROOM Name to display cameras vision</h2>
-      <p>NOTE: memorise it or keep it somewhere because it what will use for streaming on your phone!!</p>
-      {appId === "" && (
-        <p style={{ color: "red" }}>
-          Please enter your Agora App ID in App.tsx and refresh the page
+      <h1 className="logo">
+        PC<span className="ss">ONSIGHT</span>
+      </h1>
+      <form className="inputTaker">
+        <h2>Please Enter ROOM Name to display cameras vision</h2>
+        <p>
+          NOTE: memorise it or keep it somewhere because it what will use for
+          streaming on your phone!!
         </p>
-      )}
-      <input
-        type="text"
-        placeholder="Enter Room Name"
-        onChange={e => setChannelName(e.target.value)}
-      /> 
-      <div className="btnWrapper">
-       <button
-        onClick={e => {
-          e.preventDefault()
-          setInCall(true)
-          setHost(true)
-        }}
-      >
-         Host
-      </button>
-      {/* <button
+        {appId === "" && (
+          <p style={{ color: "red" }}>
+            Please enter your Agora App ID in App.tsx and refresh the page
+          </p>
+        )}
+        <input
+          type="text"
+          placeholder="Enter Room Name"
+          onChange={(e) => setChannelName(e.target.value)}
+        />
+        <div className="btnWrapper">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setInCall(true);
+              setHost(true);
+            }}
+          >
+            Host
+          </button>
+          {/* <button
         className="rounded p-3 bg-slate-600 cursor-pointer text-white"
         onClick={(e) => {
           e.preventDefault();
@@ -237,8 +244,8 @@ const ChannelForm = (props) => {
       >
         Watch it Now
       </button> */}
-      </div>
-    </form>
+        </div>
+      </form>
     </>
   );
 };

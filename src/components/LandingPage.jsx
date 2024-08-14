@@ -1,21 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./main.css";
 
 const LandingPage = () => {
   return (
     <div className="wrapper">
-        <div className="header">
-            <div className="logo">
-                <p>PC<span>OnSignt</span></p>
-            </div>
-            <div className="links">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
-            <div className="cta"></div>
-        </div>
+      <div className="links">
+        <Link to="watch">Watch</Link>
+        <Link to="stream">Stream</Link>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
